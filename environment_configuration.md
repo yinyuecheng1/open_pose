@@ -80,6 +80,10 @@ By yinyuecheng
    sudo ln -s libcudnn.so.5 libcudnn.so #生成软链接
 
    就是把cudnn中的文件复制到对应的cuda安装路径下就行，现在就等着caffe编译的时候用到它。
+- Tip1：装完cuda会发现/usr/local下有两个文件夹cuda和cuda-8.0，cuda是软链接到cuda-8.0的，所以这两个文件夹可以看成一个。往任意一个文件夹中添加东西，另一个文件夹都会有相同的东西。
+
+- Tip2：解压出来的/home/*(用户名)/下载/lib64下面有3个.so文件。分别是libcudnn.so和 libcudnn.so.5以及 libcudnn.so.5.1.10文件。并且这3个.so文件大小都一样。其实都是软连接！libcudnn.so链接到libcudnn.so.5，而libcudnn.so.5.又链接到libcudnn.so.5.1.10。真正的文件只有libcudnn.so.5.1.10。其中libcudnn.so.5的尾数5代表cudnn的版本号，这个后面会用到。
+
 
 ## 编译caffe_train
 - git clone https://github.com/CMU-Perceptual-Computing-Lab/caffe_train.git
